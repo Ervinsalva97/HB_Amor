@@ -20,7 +20,7 @@ const CalendarGrid = () => {
 
     const handleDayClick = (day) => {
         // Para el 26 (su cumple), no nos importa qué día de marzo sea, permitiremos verlo? No, la misma regla.
-        if (day <= currentDay || true /* <- Quita el "|| true" para producción, ahora en true para desarrollo */) {
+        if (day <= currentDay) {
             setSelectedDay(day);
         } else {
             setShakeDay(day);
@@ -44,7 +44,7 @@ const CalendarGrid = () => {
                 justifyItems: 'center'
             }}>
                 {days.map((day) => {
-                    const isUnlocked = day <= currentDay || true; // <-- Quitar "|| true" para produccion
+                    const isUnlocked = day <= currentDay; // <-- Bloqueo real activado
                     const isBirthday = day === 26;
 
                     return (

@@ -11,6 +11,42 @@
   --transition-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.light-mode {
+  --bg-color: #fffaf0;
+  /* Warm off-white */
+  --text-color: #333333;
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --accent-color: #ff6b6b;
+  /* Red/Orange lily hue */
+}
+
+@keyframes floatLily {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: translateY(-40px) rotate(15deg);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.4;
+  }
+}
+
+.lily-svg {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  fill: var(--accent-color);
+  animation: floatLily 10s ease-in-out infinite;
+}
+
+
 body {
   margin: 0;
   padding: 0;
