@@ -7,8 +7,8 @@ function App() {
   const [errorShake, setErrorShake] = useState(false);
 
   // Ejemplo de pregunta (puedes cambiarla después)
-  const QUESTION = "¿Cuál fue el lugar de nuestra primera cita?";
-  const CORRECT_ANSWER = "cine"; // respuesta en minúsculas para fácil validación
+  const QUESTION = "¿Qué es lo que siempre te digo que veo cuando veo tud ojos?";
+  const CORRECT_ANSWER = "glaxias"; // respuesta en minúsculas para fácil validación
 
   const handleUnlock = (e) => {
     e.preventDefault();
