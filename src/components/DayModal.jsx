@@ -1,7 +1,7 @@
 import React from 'react';
 
 const dayContents = {
-    1: { type: 'text', title: "Día 1", text: "¡Bienvenida a tu mes! Este calendario está lleno de detalles preparados con mucho amor para mi princesa Ari. Disfruta el viaje hasta el 26. 🤍" },
+    1: { type: 'text', title: "Día 1", text: "Es tu alma, mi princesa Ari, lo que verdaderamente me cautiva. Lo que los demás no pueden ver: tu empatía inmensa, tus ganas de ser mejor cada día, la forma tan pura en la que amas. Eres hermosa por fuera, pero es tu luz interna la que me hace elegirte todos los días. 🤍" },
     2: { type: 'music', title: "Día 2", text: "Una playlist para ti. La energía caótica de Kanye y el ritmo de Ariana Grande, justo como te gusta.", link: "ENLACE_A_TU_PLAYLIST_AQUI" },
     3: { type: 'coupon', title: "Día 3", text: "🎟️ VALE VIRTUAL: Noche de Maratón de Doramas a distancia. Tú eliges cuál vemos, yo pido el delivery a tu casa." },
     4: { type: 'image', title: "Día 4", text: "Siempre recuerdo el día de nuestra salida cuando la misión era buscar botas, y terminamos comprando la carterita y los aretes de mariposas y corazones en Todo Moda." },

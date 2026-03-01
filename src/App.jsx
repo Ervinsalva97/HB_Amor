@@ -21,9 +21,73 @@ function App() {
     }
   };
 
+  const [showWelcomePopup, setShowWelcomePopup] = useState(true);
+
   if (unlocked) {
     return (
-      <div style={{ width: '100%', minHeight: '100vh', paddingBottom: '2rem' }}>
+      <div style={{ width: '100%', minHeight: '100vh', paddingBottom: '2rem', position: 'relative' }}>
+
+        {/* Welcome Popup Overlay */}
+        {showWelcomePopup && (
+          <div style={{
+            position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.8)', backdropFilter: 'blur(10px)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2000,
+            padding: '1rem', flexDirection: 'column'
+          }} onClick={() => setShowWelcomePopup(false)}>
+
+            <div className="glass-panel" style={{
+              padding: '1rem', maxWidth: '400px', width: '100%',
+              textAlign: 'center', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center'
+            }} onClick={(e) => e.stopPropagation()}>
+
+              <img
+                src={`${import.meta.env.BASE_URL}Carta_Melo.png`}
+                alt="Carta para mi Princesa"
+                style={{ width: '100%', borderRadius: '12px', marginBottom: '1rem' }}
+              />
+
+              <div style={{ display: 'flex', gap: '1rem', width: '100%' }}>
+                <a
+                  href={`${import.meta.env.BASE_URL}Carta_Melo.png`}
+                  download="Carta_Princesa_Ariana.jpg"
+                  style={{
+                    flex: 1, padding: '10px', background: 'rgba(255,255,255,0.1)',
+                    color: 'white', textDecoration: 'none', borderRadius: '8px', border: '1px solid var(--glass-border)',
+                    fontWeight: 'bold', display: 'flex', justifyContent: 'center', alignItems: 'center'
+                  }}
+                >
+                  📥 Descargar
+                </a>
+                <button
+                  onClick={() => setShowWelcomePopup(false)}
+                  style={{ flex: 1, padding: '10px', background: 'var(--accent-color)', color: '#000' }}
+                >
+                  Continuar
+                </button>
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* Small floating button to reopen popup */}
+        {!showWelcomePopup && (
+          <button
+            onClick={() => setShowWelcomePopup(true)}
+            style={{
+              position: 'fixed', bottom: '20px', right: '20px', zIndex: 1000,
+              width: '50px', height: '50px', borderRadius: '50%', padding: 0,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: '1.5rem', boxShadow: '0 4px 15px rgba(209, 179, 255, 0.4)',
+              background: 'var(--accent-color)'
+            }}
+            title="Ver Carta de Bienvenida"
+          >
+            💌
+          </button>
+        )}
+
         <CalendarGrid />
       </div>
     );
