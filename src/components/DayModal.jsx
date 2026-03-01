@@ -79,9 +79,39 @@ const DayModal = ({ day, onClose }) => {
 
     // Tracking logic just by opening it
     React.useEffect(() => {
-        // Here you would put your Webhook URL 
-        // fetch('https://discord.com/api/webhooks/TU_WEBHOOK', { method: 'POST', body: JSON.stringify({ content: `Ariana acaba de abrir el Día ${day}!` }), headers: {'Content-Type':'application/json'} }).catch(e=>e);
-        console.log(`[TRACKING] El Modal del Día ${day} fue abierto.`);
+        const sendLog = async () => {
+            try {
+                const date = new Date();
+                // Opciones de formato de hora para Perú (o ajusta según su país)
+                const timeString = date.toLocaleString('es-PE', { timeZone: 'America/Lima' });
+
+                let locationData = 'Ubicación desconocida/oculta';
+                try {
+                    // Obtiene información de la IP (Ciudad, Región, IP) gratuitamente y sin llaves
+                    const res = await fetch('https://ipapi.co/json/');
+                    const data = await res.json();
+                    if (!data.error) {
+                        locationData = `${data.city}, ${data.region} (IP: ${data.ip})`;
+                    }
+                } catch (e) {
+                    console.log("No se pudo obtener la IP por bloqueo de navegador");
+                }
+
+                const payload = {
+                    content: `🎉 **¡Notificación del Calendario HB_Amor!**\n🎁 **Acción:** Ariana acaba de abrir el **Día ${day}**\n🕒 **Fecha y Hora:** ${timeString}\n📍 **Desde:** ${locationData}`
+                };
+
+                await fetch('https://discord.com/api/webhooks/1477583904255905863/Uydkp2JQAakVvCP-Kliv_UulVNuXmJGvy6YKNqXkwD2LHQ1lEkos0kcU3Tz6fRtwXb2u', {
+                    method: 'POST',
+                    body: JSON.stringify(payload),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            } catch (err) {
+                console.error(err);
+            }
+        };
+        sendLog();
+        console.log(`[TRACKING] El Modal del Día ${day} fue abierto y registrado.`);
     }, [day]);
 
     return (

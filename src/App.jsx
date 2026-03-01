@@ -5,7 +5,11 @@ function App() {
   const [unlocked, setUnlocked] = useState(false);
   const [answer, setAnswer] = useState('');
   const [errorShake, setErrorShake] = useState(false);
-  const [showWelcomePopup, setShowWelcomePopup] = useState(true);
+  const [showWelcomePopup, setShowWelcomePopup] = useState(() => {
+    const today = new Date();
+    // Solo se mostrará automáticamente el 1ro de Marzo (mes 2 porque en JS Enero es 0)
+    return today.getMonth() === 2 && today.getDate() === 1;
+  });
   const [isLightMode, setIsLightMode] = useState(false);
 
   useEffect(() => {
