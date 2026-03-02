@@ -153,6 +153,14 @@ const DayModal = ({ day, onClose }) => {
                     {content.text}
                 </p>
 
+                {content.type === 'image' && content.src && (
+                    <img
+                        src={`${import.meta.env.BASE_URL}${content.src.startsWith('/') ? content.src.slice(1) : content.src}`}
+                        alt={content.title}
+                        style={{ maxWidth: '100%', borderRadius: '12px', marginBottom: '1.5rem', boxShadow: '0 4px 15px rgba(255,255,255,0.1)' }}
+                    />
+                )}
+
                 {content.type === 'list' && content.list && (
                     <ul style={{ textAlign: 'left', display: 'inline-block', maxWidth: '300px', margin: '0 auto', fontSize: '1.1rem' }}>
                         {content.list.map((item, idx) => (
