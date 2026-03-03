@@ -49,6 +49,9 @@ const DayModal = ({ day, onClose }) => {
         if (!modalRef.current) return;
         setIsSharing(true);
         try {
+            // Esperar un instante para que React actualice la UI (oculte el botón y expanda el modal)
+            await new Promise(resolve => setTimeout(resolve, 300));
+
             // Log that she opened/shared it
             console.log(`Compartiendo el regalo del Día ${day}`);
 
@@ -128,7 +131,9 @@ const DayModal = ({ day, onClose }) => {
         }} onClick={onClose}>
 
             <div ref={modalRef} className="glass-panel" style={{
-                padding: '2rem', maxWidth: '500px', width: '100%', maxHeight: '80vh', overflowY: 'auto',
+                padding: '2rem', maxWidth: '500px', width: '100%',
+                maxHeight: isSharing ? 'none' : '80vh',
+                overflowY: isSharing ? 'visible' : 'auto',
                 textAlign: 'center', position: 'relative'
             }} onClick={(e) => e.stopPropagation()}>
 
