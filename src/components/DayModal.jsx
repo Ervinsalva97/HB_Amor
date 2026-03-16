@@ -22,17 +22,19 @@ const dayContents = {
     13: { type: 'music', title: "Día 13", text: "Canción del día: Hoy toca subir el volumen y poner una gran canción de tu favorito Bad Bunny. ¡A recargar energías que ya falta menos para tu cumple!", link: "https://open.spotify.com/intl-es/track/2lTm559tuIvatlT1u0JYG2?si=c12460f7e2f34bd5" },
     14: { type: 'coupon', title: "Día 14", text: "🎟️ VALE VIRTUAL: Soporte emocional VIP. Un comodín para cuando te sientas estresada. Lo canjeas y yo dejo todo para escucharte, sin juzgar, solo para ser tu refugio. Porque te mereces todo eso y más. \n Psdt: Feliz primer mes de relación 🤍 eres mi amor bonito" },
     15: { type: 'text', title: "Día 15", text: "Estaba revisando el código de mi vida y me di cuenta de que tú eres la actualización que solucionó todos mis errores." },
-    16: { type: 'text', title: "Día 16", text: "Eres más fina que un lirio, más intensa que un buen rap, y siempre serás mi melodía favorita." },
+    16: { type: 'coupon', title: "Día 16", text: "Eres más fina que un lirio, más intensa que un buen rap, y siempre serás mi melodía favorita.\n\n🎟️ VALE VIRTUAL: Cupón de Delivery Sorpresa (Tú eliges el antojo, yo lo mando)." },
+
     17: { type: 'coupon', title: "Día 17", text: "🎟️ VALE VIRTUAL: Masaje virtual (o real cuando nos veamos) para quitarte todo el estrés de la semana." },
     18: { type: 'list', title: "Día 18", text: "Mis pequeños lujos de la vida:", list: ["Tus 'buenos días'", "Saber que cuento contigo", "Verte superar tus miedos", "Llamarte 'My Girlfriend'", "Que me llames Mel"] },
-    19: { type: 'game', title: "Día 19", text: "¡Faltan exactamente 7 días para el día central! Prepárate mentalmente." },
+    19: { type: 'coupon', title: "Día 19", text: "¡Faltan exactamente 7 días para el día central! Prepárate mentalmente.\n\n🎟️ VALE VIRTUAL: Cupón de Videollamada 'Sin Fin' (Hablar hasta quedar dormidos)." },
+
     20: { type: 'coupon', title: "Día 20", text: "🎟️ VALE VIRTUAL: Capricho libre. Este vale es un cheque en blanco. Tú decides qué quieres que haga, cómo y cuándo." },
     21: { type: 'text', title: "Día 21", text: "A veces pienso en la primera vez que hablamos y me sonrío solo. Qué buena suerte tuve." },
     22: { type: 'text', title: "Día 22", text: "Ya casi llega la fecha. Estoy contando las horas con más ansias que tú, creo." },
     23: { type: 'coupon', title: "Día 23", text: "🎟️ VALE VIRTUAL: Tu postre favorito. Lo canjeas y mágicamente aparecerá para endulzarte la tarde." },
     24: { type: 'music', title: "Día 24", text: "Playlist pre-cumpleaños: Una mezcla pensada solo en ti. Un poco de Bad Bunny para la energía, y esa vibra indie de 'She & Him' que tanto te gusta. ¡Tu mezcla perfecta para la semana de tu cumple!", link: "ENLACE_A_TU_PLAYLIST_AQUI" },
     25: { type: 'text', title: "Día 25", text: "La víspera. Esta noche no duermo de la emoción de celebrar tu vida." },
-    26: { type: 'birthday', title: "¡FELIZ CUMPLEAÑOS 19, MI PRINCESA ARI!", text: "Hoy celebramos la luz de tu alma. Eres mi lugar tranquilo, mi inspiración y mi amor. Revisa tus mensajes para la siguiente sorpresa. Te amo infinitamente. 🎂👑✨" },
+    26: { type: 'birthday', title: "¡FELIZ CUMPLEAÑOS 19, PRINCESA ARI!", text: "Hoy celebramos la luz de tu alma. Eres mi lugar tranquilo, mi inspiración y mi amor. Revisa tus mensajes para la siguiente sorpresa. Te amo infinitamente. 🎂👑✨\n\n🎟️ VALE VIRTUAL: Cupón por unas zapatillas, unas botas o un deseo que tu corazón elija (¡Piénsalo muy bien! ✨)." },
     27: { type: 'coupon', title: "Día 27", text: "🎟️ VALE VIRTUAL: Cura post-cumpleaños. Día de descanso total para ti, yo me encargo de animarte y engreírte para que te recuperes." },
     28: { type: 'text', title: "Día 28", text: "Seguimos celebrando. Un solo día no alcanza para festejar lo increíble que eres." },
     29: { type: 'text', title: "Día 29", text: "Aún no supero la suerte que tengo de poder acompañarte en este nuevo capítulo de tu vida." },
@@ -154,7 +156,7 @@ const DayModal = ({ day, onClose }) => {
                     {day === 26 ? '👑 ' : ''}{content.title}
                 </h2>
 
-                <p style={{ fontSize: '1.2rem', lineHeight: '1.6', marginBottom: '1.5rem' }}>
+                <p style={{ fontSize: '1.2rem', lineHeight: '1.6', marginBottom: '1.5rem', whiteSpace: 'pre-wrap' }}>
                     {content.text}
                 </p>
 
@@ -183,7 +185,7 @@ const DayModal = ({ day, onClose }) => {
                     </a>
                 )}
 
-                {content.type === 'coupon' && (
+                {(content.type === 'coupon' || content.type === 'birthday') && (
                     <div style={{
                         marginTop: '1.5rem', padding: '15px', border: '2px dashed var(--accent-color)',
                         borderRadius: '12px', display: 'inline-block', background: 'rgba(209, 179, 255, 0.1)'
