@@ -15,7 +15,7 @@ const CalendarGrid = () => {
         const marchDay = isMarch ? today.getDate() : 0; // 0 significa antes de marzo.
 
         // TEMPORAL: para poder ver el efecto hoy, puedes forzar un día: ej setCurrentDay(5);
-        setCurrentDay(14)
+        setCurrentDay(marchDay)
     }, []);
 
     const handleDayClick = (day) => {
